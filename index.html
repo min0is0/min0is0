@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>인형의 집</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        height: 100vh;
+        overflow: hidden;
+    }
+    #entrance {
+        background-image: url('images/entrance.jpeg');
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+    #entrance p {
+        font-size: 2em;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    #rooms {
+        display: none;
+        background-image: url('images/배경.jpeg');
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .room {
+        background-image: url('images/문.png');
+        background-size: cover;
+        width: 200px;
+        height: 300px;
+        margin: 10px;
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .room img {
+        display: none;
+        width: 150px;
+        height: auto;
+    }
+    .room button {
+        display: none;
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 15px;
+        width: 90%;
+        font-size: 16px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    .room button:hover {
+        background-color: darkblue;
+    }
+    #volume-control {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    #volume-control label {
+        color: white;
+        font-size: 14px;
+    }
+</style>
+<script>
+let audio;
+
+function enterHouse() {
+    document.getElementById('entrance').style.display = 'none';
+    document.getElementById('rooms').style.display = 'flex';
+    audio = new Audio('music/Panorama.mp3');
+    audio.loop = true;
+    audio.volume = 0.5;
+    audio.play();
+}
+
+function toggleDoll(room) {
+    document.querySelectorAll('.room img, .room button').forEach(function(el) {
+        el.style.display = 'none';
+    });
+    document.querySelectorAll('.room').forEach(function(rm) {
+        rm.style.backgroundImage = "url('images/문.png')";
+    });
+    room.style.backgroundImage = 'none';
+    var img = room.querySelector('img');
+    var button = room.querySelector('button');
+    img.style.display = 'block';
+    button.style.display = 'block';
+}
+
+function setVolume(value) {
+    if (audio) {
+        audio.volume = value;
+    }
+}
+
+function greet(doll) {
+    const messages = {
+        "아존돌": "안녕! 난 아존돌이야. 뭐? 왜 쳐다봐? 내가 귀엽다고? 하, 말도 안 돼! ...그래도 고마워.",
+        "미아돌": "안녕하세요... 저는 미아돌이에요... 만나서 반가워요...",
+        "체리": "나는 체리야! 카드캡터 체리라고도 불리지. 근데 있잖아, 그 타카라 토미? 그 회사 인형들 별로더라.",
+        "죠시": "안녕~ 우리는 죠시야! 시끌벅적한 자매들이라 싸우기도 하지만, 우린 최고야!",
+        "뚱리": "흠... 난 뚱리야. 이 집에서 제일 오래됐어. 뭐? 잠시 졸았다고? 그런 말 하지 마!",
+        "작은 동물들": "우...우우우... 우우우우우우..."
+    };
+    alert(messages[doll]);
+}
+</script>
+</head>
+<body>
+<div id="entrance" onclick="enterHouse()">
+    <p>문 클릭하기</p>
+</div>
+<div id="rooms">
+    <div id="volume-control">
+        <label for="volume">볼륨:</label>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" onchange="setVolume(this.value)">
+    </div>
+    <div class="room" onclick="toggleDoll(this)">
+        <img src="images/아존돌.jpeg" alt="아존돌">
+        <button onclick="greet('아존돌')">아존돌 인사하기</button>
+    </div>
+    <div class="room" onclick="toggleDoll(this)">
+        <img src="images/미아돌.jpeg" alt="미아돌">
+        <button onclick="greet('미아돌')">미아돌 인사하기</button>
+    </div>
+    <div class="room" onclick="toggleDoll(this)">
+        <img src="images/체리.jpeg" alt="체리">
+        <button onclick="greet('체리')">체리 인사하기</button>
+    </div>
+    <div class="room" onclick="toggleDoll(this)">
+        <img src="images/죠시.jpeg" alt="죠시">
+        <button onclick="greet('죠시')">죠시 인사하기</button>
+    </div>
+    <div class="room" onclick="toggleDoll(this)">
+        <img src="images/뚱리.jpeg" alt="뚱리">
+        <button onclick="greet('뚱리')">뚱리 인사하기</button>
+    </div>
+    <div class="room" onclick="toggleDoll(this)">
+        <img src="images/작은동물들.jpeg" alt="작은 동물들">
+        <button onclick="greet('작은 동물들')">작은 동물들 인사하기</button>
+    </div>
+</div>
+</body>
+</html>
