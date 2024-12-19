@@ -30,7 +30,7 @@
     }
     #rooms {
         display: none;
-        background-image: <img src="http://min0is0.github.io/min0is0.github.io/배경.jpeg"/>;
+        background-image: url('images/배경.jpeg');
         background-size: cover;
         width: 100%;
         height: 100%;
@@ -41,7 +41,7 @@
         align-items: center;
     }
     .room {
-        background-image: <img src="http://min0is0.github.io/min0is0.github.io/문.png"/>;
+        background-image: url('/images/문.png');
         background-size: cover;
         width: 200px;
         height: 300px;
@@ -102,7 +102,7 @@ function toggleDoll(room) {
         el.style.display = 'none';
     });
     document.querySelectorAll('.room').forEach(function(rm) {
-        rm.style.backgroundImage = "url('images/문.png')";
+        rm.style.backgroundImage = "url('/images/문.png')";
     });
     room.style.backgroundImage = 'none';
     var img = room.querySelector('img');
