@@ -88,7 +88,6 @@
 <script>
 let audio;
 
-// 첫 번째 화면에서 두 번째 화면으로 전환하면서 음악 재생
 function enterHouse() {
     document.getElementById('entrance').style.display = 'none';
     document.getElementById('rooms').style.display = 'flex';
@@ -98,7 +97,6 @@ function enterHouse() {
     audio.play();
 }
 
-// 문 클릭 시 해당 인형 이미지와 버튼 표시
 function toggleDoll(room) {
     document.querySelectorAll('.room img, .room button').forEach(function(el) {
         el.style.display = 'none';
@@ -113,14 +111,12 @@ function toggleDoll(room) {
     button.style.display = 'block';
 }
 
-// 볼륨 조절
 function setVolume(value) {
     if (audio) {
         audio.volume = value;
     }
 }
 
-// 인사 메시지 표시
 function greet(doll) {
     const messages = {
         "아존돌": "안녕! 난 아존돌이야. 뭐? 왜 쳐다봐? 내가 귀엽다고? 하, 말도 안 돼! ...그래도 고마워.",
