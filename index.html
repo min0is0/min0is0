@@ -12,7 +12,7 @@
         overflow: hidden;
     }
     #entrance {
-        background-image: url('images/entrance.jpeg');
+        background-image: url('./images/entrance.jpeg');
         background-size: cover;
         display: flex;
         justify-content: center;
@@ -30,7 +30,7 @@
     }
     #rooms {
         display: none;
-        background-image: url('../images/배경.jpeg');
+        background-image: url('./images/배경.jpeg');
         background-size: cover;
         width: 100%;
         height: 100%;
@@ -41,7 +41,7 @@
         align-items: center;
     }
     .room {
-        background-image: url('../images/문.png');
+        background-image: url('./images/문.png');
         background-size: cover;
         width: 200px;
         height: 300px;
@@ -102,7 +102,7 @@ function toggleDoll(room) {
         el.style.display = 'none';
     });
     document.querySelectorAll('.room').forEach(function(rm) {
-        rm.style.backgroundImage = "url('../images/문.png')";
+        rm.style.backgroundImage = "url('./images/문.png')";
     });
     room.style.backgroundImage = 'none';
     var img = room.querySelector('img');
@@ -140,27 +140,27 @@ function greet(doll) {
         <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" onchange="setVolume(this.value)">
     </div>
     <div class="room" onclick="toggleDoll(this)">
-        <img src="../images/아존돌.jpeg" alt="아존돌">
+        <img src="./images/아존돌.jpeg" alt="아존돌">
         <button onclick="greet('아존돌')">아존돌 인사하기</button>
     </div>
     <div class="room" onclick="toggleDoll(this)">
-        <img src="../images/미아돌.jpeg" alt="미아돌">
+        <img src="./images/미아돌.jpeg" alt="미아돌">
         <button onclick="greet('미아돌')">미아돌 인사하기</button>
     </div>
     <div class="room" onclick="toggleDoll(this)">
-        <img src="../images/체리.jpeg" alt="체리">
+        <img src="./images/체리.jpeg" alt="체리">
         <button onclick="greet('체리')">체리 인사하기</button>
     </div>
     <div class="room" onclick="toggleDoll(this)">
-        <img src="../images/죠시.jpeg" alt="죠시">
+        <img src="./images/죠시.jpeg" alt="죠시">
         <button onclick="greet('죠시')">죠시 인사하기</button>
     </div>
     <div class="room" onclick="toggleDoll(this)">
-        <img src="../images/뚱리.jpeg" alt="뚱리">
+        <img src="./images/뚱리.jpeg" alt="뚱리">
         <button onclick="greet('뚱리')">뚱리 인사하기</button>
     </div>
     <div class="room" onclick="toggleDoll(this)">
-        <img src="../images/작은동물들.jpeg" alt="작은 동물들">
+        <img src="./images/작은동물들.jpeg" alt="작은 동물들">
         <button onclick="greet('작은 동물들')">작은 동물들 인사하기</button>
     </div>
 </div>
